@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "go-image.fullname" . }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ include "go-image.name" . }}
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: {{ .Values.service.nodePort }}

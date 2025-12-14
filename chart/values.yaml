@@ -1,0 +1,9 @@
+image:
+  repository: "REPLACE_ME"
+  tag: "dev"
+
+service:
+  type: NodePort
+  nodePort: 31080
+
+deployedBy: "unknown"
