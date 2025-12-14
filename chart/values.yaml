@@ -9,3 +9,4 @@ service:
 deployedBy: "unknown"
 imageUrl: "https://picsum.photos/800/500"
 nodeSelector: {}
+replicaCount: 1
