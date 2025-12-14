@@ -20,6 +20,10 @@ spec:
         app: {{ include "go-image.name" . }}
         owner: {{ .Values.deployedBy | quote }}
     spec:
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+      {{- toYaml .Values.nodeSelector | nindent 8 }}
+      {{- end }}
       containers:
         - name: app
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
