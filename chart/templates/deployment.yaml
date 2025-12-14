@@ -29,6 +29,8 @@ spec:
           env:
             - name: DEPLOYED_BY
               value: {{ .Values.deployedBy | quote }}
+            - name: IMAGE_URL
+              value: {{ .Values.imageUrl | quote }}
           readinessProbe:
             httpGet:
               path: /healthz
@@ -41,3 +43,4 @@ spec:
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
+

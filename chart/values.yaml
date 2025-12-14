@@ -7,3 +7,4 @@ service:
   nodePort: 31080
 
 deployedBy: "unknown"
+imageUrl: "https://picsum.photos/800/500"
