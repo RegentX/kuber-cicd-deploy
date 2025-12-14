@@ -19,9 +19,6 @@ spec:
       labels:
         app: {{ include "go-image.name" . }}
         owner: {{ .Values.deployedBy | quote }}
-      annotations:
-        # Ключевой трюк: меняется configmap (картинка) → меняется checksum → Kubernetes делает rollout
-        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:
       containers:
         - name: app
@@ -44,11 +41,3 @@ spec:
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
-          volumeMounts:
-            - name: image
-              mountPath: /data
-              readOnly: true
-      volumes:
-        - name: image
-          configMap:
-            name: {{ include "go-image.fullname" . }}-image
