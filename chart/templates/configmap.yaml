@@ -1,7 +1,7 @@
-{{- define "go-image.name" -}}
-go-image
-{{- end -}}
-
-{{- define "go-image.fullname" -}}
-go-image
-{{- end -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "go-image.fullname" . }}-image
+data: {}
+binaryData:
+  image.png: {{ (.Files.Get "image.png") | b64enc }}
